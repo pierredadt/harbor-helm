@@ -19,7 +19,7 @@ imagePullPolicy: IfNotPresent
 
 auth:
   mode: db_auth
-  self_registration: "on"
+  self_registration: "off"
   ldap:
     url: ldaps://ldap.domain:636
     search_dn: search_dn_string
