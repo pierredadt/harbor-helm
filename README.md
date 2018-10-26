@@ -74,21 +74,24 @@ The following tables lists the configurable parameters of the Harbor chart and t
 | **Authentication** |
 | `auth.mode` | The type of authentication that is used | `db_auth` |
 | `auth.self_registration` | Enable / Disable the ability for a user to register himself/herself. When disabled, new users can only be created by the Admin user. When auth.mode is set to ldap_auth, self-registration feature is always disabled, and this flag is ignored | `off` |
-| `auth.ldap.url` | The LDAP endpoint URL | `ldaps://ldap.domain:636` |
-| `auth.ldap.search_dn` | The DN of a user who has the permission to search an LDAP/AD server | `uid=admin,ou=people,dc=mydomain,dc=com` |
-| `auth.ldap.search_password` | The password of the user specified by ldap.search_dn | `search_password` |
-| `auth.ldap.base_dn` | The base DN to look up a user | `ou=people,dc=mydomain,dc=com` |
+| `auth.ldap.url` | The LDAP endpoint URL | `ldaps://ldap.domain` |
+| `auth.ldap.searchDn` | The DN of a user who has the permission to search an LDAP/AD server | `uid=admin,ou=people,dc=mydomain,dc=com` |
+| `auth.ldap.searchPassword` | The password of the user specified by ldap.search_dn | `search_password` |
+| `auth.ldap.baseDn` | The base DN to look up a user | `ou=people,dc=mydomain,dc=com` |
 | `auth.ldap.filter` | The search filter for looking up a user | `objectClass=person` |
-| `auth.ldap.user_uid` | The attribute used to match a user during a LDAP search | ` ` |
-| `auth.ldap.search_scope` | The scope to search for a user, 0-LDAP_SCOPE_BASE, 1-LDAP_SCOPE_ONELEVEL, 2-LDAP_SCOPE_SUBTREE | `2` |
+| `auth.ldap.userUid` | The attribute used to match a user during a LDAP search | `sAMAccountName` |
+| `auth.ldap.searchScope` | The scope to search for a user, 0-LDAP_SCOPE_BASE, 1-LDAP_SCOPE_ONELEVEL, 2-LDAP_SCOPE_SUBTREE | `2` |
+| `auth.ldap.timeout` | The timeout limit when requesting the LDAP | `5` |
+| `auth.ldap.verifyCert` | Whether the LDAP certificate should be verified or not| `true` |
  **Email** |
-| `email.enabled` | Enable / Disable the email configuration | `false` |
-| `email.host` | The SMTP server to use | `smtp.mydomain.com` |
-| `email.from` | The identity to use for the email sender | `admin <sample_admin@mydomain.com>` |
-| `email.port` | The port of the SMTP server | `25` |
-| `email.user` | The user who has the permission to send mails on the SMTP server | `sample_admin` |
-| `email.password` | The password of the user specified by email.user  | `unsecure_password` |
-| `email.ssl_enabled` | Enable / Disable the SSL for sending mails | `false` |
+| `email.host` | The hostname of email server | `smtp.mydomain.com` |
+| `email.port` | The port of email server | `25` |
+| `email.username` | The username of email server | `sample_admin@mydomain.com` |
+| `email.password` | The password for email server | `unsecure_password` |
+| `email.ssl` | Whether use TLS | `false` |
+| `email.from` | The from address shown when send email| `admin <sample_admin@mydomain.com>` |
+| `email.identity` | | |
+| `email.insecure` | Whether the connection with email server is insecure | `false` |
 | **Adminserver** |
 | `adminserver.image.repository` | Repository for adminserver image | `goharbor/harbor-adminserver` |
 | `adminserver.image.tag` | Tag for adminserver image | `dev` |
